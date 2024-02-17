@@ -30,4 +30,5 @@
 .dropdown {
   width: 30px;
   height: 50px;
+  cursor: pointer;
 }
