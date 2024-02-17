@@ -1,0 +1,26 @@
+:root {
+  --main-color: #fbeec1;
+  --sec-color: #bc986a;
+  --accent-color: #659dbd;
+}
+* {
+  margin: 0;
+}
+.header {
+  display: flex;
+  max-width: 100%;
+  background-color: var(--sec-color);
+}
+div.logo {
+  display: flex;
+  height: 8em;
+  margin-left: 60px;
+}
+.high-scores {
+  max-width: 50px;
+  max-height: 50px;
+}
+.dropdown {
+  max-width: 50px;
+  max-height: 50px;
+}

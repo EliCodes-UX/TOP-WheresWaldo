@@ -10,10 +10,10 @@ app.use(
   })
 );
 
-app.get('/api/data', (req, res) => {
-  const data = { message: 'Data from backend' };
-  res.json(data);
-});
+// app.get('/', (req, res) => {
+//   const data = { message: 'Data from backend' };
+//   res.json(data);
+// });
 
 app.listen(PORT, () => {
   console.log(`Backend server is running on http://localhost:${PORT}`);

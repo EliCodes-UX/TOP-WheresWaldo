@@ -1,18 +1,27 @@
-import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch('http://localhost:5000/api/data')
-      .then(response => response.json())
-      .then(data => setData(data))
-      .catch(error => console.error('error', error));
-  }, []);
   return (
     <>
-      <div>{data ? <p>{data.message}</p> : <p>Loading...</p>}</div>
+      <header className='header'>
+        <div className='logo'>
+          <img src='./src/assets/wheresWaldoLogo.png' />
+        </div>
+        <div className='high-scores'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            viewBox='0 0 24 24'
+            fill='currentColor'
+            className='drop-down'
+          >
+            <path
+              fillRule='evenodd'
+              d='M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z'
+              clipRule='evenodd'
+            />
+          </svg>
+        </div>
+      </header>
     </>
   );
 }
