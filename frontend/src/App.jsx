@@ -1,3 +1,4 @@
+import dropdownIcon from './assets/dropdown.svg';
 import './App.css';
 
 function App() {
@@ -5,21 +6,10 @@ function App() {
     <>
       <header className='header'>
         <div className='logo'>
-          <img src='./src/assets/wheresWaldoLogo.png' />
+          <img src='./src/assets/wheresWaldoLogo.png' className='logoImg' />
         </div>
         <div className='high-scores'>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            viewBox='0 0 24 24'
-            fill='currentColor'
-            className='drop-down'
-          >
-            <path
-              fillRule='evenodd'
-              d='M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z'
-              clipRule='evenodd'
-            />
-          </svg>
+          <img src={dropdownIcon} alt='Dropdown' className='dropdown' />
         </div>
       </header>
     </>
