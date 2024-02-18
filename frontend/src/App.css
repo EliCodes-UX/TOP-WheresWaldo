@@ -6,6 +6,10 @@
 * {
   margin: 0;
 }
+body {
+  background-image: url(./assets/abstract1.jpg);
+  background-size: cover;
+}
 .header {
   display: flex;
   max-width: 100%;
@@ -26,6 +30,7 @@
   width: 30px;
   height: 50px;
   margin-right: 60px;
+  flex-direction: column-reverse;
 }
 .dropdown {
   width: 30px;
