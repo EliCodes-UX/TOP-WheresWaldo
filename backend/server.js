@@ -30,11 +30,6 @@ app.get('/heartClick', (req, res) => {
   res.sendStatus(200);
 });
 
-// app.get('/', (req, res) => {
-//   const data = { message: 'Data from backend' };
-//   res.json(data);
-// });
-
 app.listen(PORT, () => {
   console.log(`Backend server is running on http://localhost:${PORT}`);
 });

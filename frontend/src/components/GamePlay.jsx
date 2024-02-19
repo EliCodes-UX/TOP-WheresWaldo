@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import heartSnail from '../assets/heart-snail.jpg';
@@ -11,18 +12,27 @@ export default function GamePlay() {
   const [timerStarted, setTimerStarted] = useState(false);
 
   useEffect(() => {
+    let timerInterval;
+
     if (!timerStarted) {
       fetch('/startTimer')
         .then(response => {
           if (response.ok) {
             setTimerStarted(true);
-            console.log('started timer');
+            timerInterval = setInterval(() => {
+              console.log('Timer is running...');
+            }, 1000);
           }
         })
         .catch(error => {
-          console.error('error starting timer', error);
+          console.error('Error starting timer:', error);
         });
     }
+
+    return () => {
+      clearInterval(timerInterval);
+      console.log('Timer ended');
+    };
   }, []);
 
   const handleBackToMain = () => {
@@ -34,16 +44,13 @@ export default function GamePlay() {
     const clickX = event.clientX - imageRect.left;
     const clickY = event.clientY - imageRect.top;
 
-    // Check if the click is within the desired area
     const clickedArea = {
       x: clickX,
       y: clickY,
     };
 
-    // Save the coordinates
     setHeartPosition(clickedArea);
 
-    // Log 'clicked' when the specified area is clicked
     if (
       clickedArea.x >= 91.69921875 &&
       clickedArea.x <= 112.69921875 &&
