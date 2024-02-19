@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import heartSnail from '../assets/heart-snail.jpg';
+import Modal from './Modal';
 
 export default function GamePlay() {
   const navigate = useNavigate();
@@ -65,11 +66,7 @@ export default function GamePlay() {
         </div>
       </div>
       {showModal && (
-        <modal onClick={handleCloseModal}>
-          <p>
-            you found the heart at {heartPosition.x}, {heartPosition.y}
-          </p>
-        </modal>
+        <Modal onClick={handleCloseModal} heartPosition={heartPosition}></Modal>
       )}
     </div>
   );
