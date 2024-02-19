@@ -5,8 +5,7 @@ import heartSnail from '../assets/heart-snail.jpg';
 export default function GamePlay() {
   const navigate = useNavigate();
 
-  const [showTargetingBox, setShowTargetingBox] = useState(false);
-  const [heartPosition, setheartPosition] = useState({ x: 0, y: 0 });
+  const [heartPosition, setHeartPosition] = useState({ x: 0, y: 0 });
 
   const handleBackToMain = () => {
     navigate('/', { replace: true });
@@ -14,20 +13,27 @@ export default function GamePlay() {
 
   const handleImgClick = event => {
     const imageRect = event.target.getBoundingClientRect();
-    const x = event.clientX - imageRect.left;
-    const y = event.clientY - imageRect.top;
+    const clickX = event.clientX - imageRect.left;
+    const clickY = event.clientY - imageRect.top;
 
-    // Set the position of the targeting box
-    console.log({ x, y });
-    setheartPosition({ x, y });
+    // Check if the click is within the desired area
+    const clickedArea = {
+      x: clickX,
+      y: clickY,
+    };
 
-    // Show the targeting box
-    setShowTargetingBox(true);
-  };
+    // Save the coordinates
+    setHeartPosition(clickedArea);
 
-  const handleCloseImgClick = () => {
-    setShowTargetingBox(false);
-    console.log('clicked');
+    // Log 'clicked' when the specified area is clicked
+    if (
+      clickedArea.x >= 91.69921875 &&
+      clickedArea.x <= 112.69921875 &&
+      clickedArea.y >= 169.2890625 &&
+      clickedArea.y <= 193.2890625
+    ) {
+      console.log('clicked');
+    }
   };
 
   return (
@@ -43,18 +49,6 @@ export default function GamePlay() {
           onClick={handleImgClick}
         />
       </div>
-      {showTargetingBox && (
-        <div
-          className='targetingBox'
-          onClick={handleCloseImgClick}
-          style={{
-            left: heartPosition.x,
-            top: heartPosition.y,
-          }}
-        >
-          tageting Box Content
-        </div>
-      )}
       <div className='buttons'>
         <div className='goHome'>
           <button className='homeBtn btn' onClick={handleBackToMain}>
