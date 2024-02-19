@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import heartSnail from '../assets/heart-snail.jpg';
 import Modal from './Modal';
@@ -8,6 +8,22 @@ export default function GamePlay() {
 
   const [heartPosition, setHeartPosition] = useState({ x: 0, y: 0 });
   const [showModal, setShowModal] = useState(false);
+  const [timerStarted, setTimerStarted] = useState(false);
+
+  useEffect(() => {
+    if (!timerStarted) {
+      fetch('/startTimer')
+        .then(response => {
+          if (response.ok) {
+            setTimerStarted(true);
+            console.log('started timer');
+          }
+        })
+        .catch(error => {
+          console.error('error starting timer', error);
+        });
+    }
+  }, []);
 
   const handleBackToMain = () => {
     navigate('/', { replace: true });
@@ -35,7 +51,15 @@ export default function GamePlay() {
       clickedArea.y <= 193.2890625
     ) {
       console.log('clicked');
-      setShowModal(true);
+      fetch('/heartClicked')
+        .then(response => {
+          if (response.ok) {
+            setShowModal(true);
+          }
+        })
+        .catch(error => {
+          console.error('error with heart click', error);
+        });
     }
   };
   const handleCloseModal = () => {

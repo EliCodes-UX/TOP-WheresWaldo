@@ -14,6 +14,22 @@ let startTime;
 let timerInterval;
 let heartClicked = false;
 
+app.get('/startTimer', (req, res) => {
+  startTime = Date.now();
+  timerInterval = setInterval(() => {
+    const timeElapsed = Date.now() - startTime;
+    res.json({ timeElapsed: timeElapsed, heartClicked });
+  }, 1000);
+});
+
+app.get('/heartClick', (req, res) => {
+  if (!heartClicked) {
+    heartClicked = true;
+    clearInterval(timerInterval);
+  }
+  res.sendStatus(200);
+});
+
 // app.get('/', (req, res) => {
 //   const data = { message: 'Data from backend' };
 //   res.json(data);
