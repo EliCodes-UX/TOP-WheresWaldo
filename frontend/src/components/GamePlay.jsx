@@ -11,12 +11,20 @@ export default function GamePlay() {
   return (
     <div className='gamePlayDiv'>
       <div className='playGame'>
+        <h1 className='gameHeader'>
+          How fast can you find the Heart in the bunch of snails
+        </h1>
         <img className='heartSnailGame' src={heartSnail} alt='Heart Snail' />
       </div>
-      <div className='goHome'>
-        <button className='homeBtn' onClick={handleClick}>
-          Back to Main
-        </button>
+      <div className='buttons'>
+        <div className='goHome'>
+          <button className='homeBtn btn' onClick={handleClick}>
+            Back to Main
+          </button>
+        </div>
+        <div>
+          <button className='btn'>Restart</button>
+        </div>
       </div>
     </div>
   );

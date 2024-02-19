@@ -54,8 +54,11 @@ body {
   border-radius: 15%;
 }
 .gameHeader {
+  color: var(--main-color);
   background-color: var(--accent-color);
   margin-bottom: 5px;
+  border: 0.1em solid var(--sec-color);
+  padding: 5px;
 }
 .heartSnailImg {
   height: 400px;
@@ -74,10 +77,60 @@ body {
   display: flex;
   width: 50%;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .heartSnailGame {
   height: 700px;
   width: 700px;
   border: 3px solid var(--accent-color);
   cursor: pointer;
+}
+
+/* CSS for buttons help from By Foundation */
+.btn {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #1a1a1a;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: var(--main-color);
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+}
+.btn:disabled {
+  pointer-events: none;
+}
+.btn:hover {
+  color: #fff;
+  background-color: #1a1a1a;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+.btn:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+.buttons {
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
 }
