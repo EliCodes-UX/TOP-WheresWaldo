@@ -22,6 +22,12 @@ app.get('/startTimer', (req, res) => {
   }, 1000);
 });
 
+let elapsedTimeValue = 0;
+
+app.get('/elapsedTime', (req, res) => {
+  res.json({ elapsedTime: elapsedTimeValue });
+});
+
 app.get('/heartClick', (req, res) => {
   if (!heartClicked) {
     heartClicked = true;

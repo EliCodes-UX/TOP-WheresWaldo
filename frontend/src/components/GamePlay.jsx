@@ -10,6 +10,7 @@ export default function GamePlay() {
   const [heartPosition, setHeartPosition] = useState({ x: 0, y: 0 });
   const [showModal, setShowModal] = useState(false);
   const [timerStarted, setTimerStarted] = useState(false);
+  const [elapsedTime, setElapsedTime] = useState(0);
 
   useEffect(() => {
     let timerInterval;
@@ -33,7 +34,7 @@ export default function GamePlay() {
       clearInterval(timerInterval);
       console.log('Timer ended');
     };
-  }, []);
+  }, [timerStarted]);
 
   const handleBackToMain = () => {
     navigate('/', { replace: true });
@@ -58,14 +59,21 @@ export default function GamePlay() {
       clickedArea.y <= 193.2890625
     ) {
       console.log('clicked');
-      fetch('/heartClicked')
+      fetch('/elapsedTime')
         .then(response => {
           if (response.ok) {
-            setShowModal(true);
+            return response.json();
+          } else {
+            throw new Error('Error fetching elapsed time');
           }
         })
+        .then(data => {
+          console.log('Elapsed time:', data.elapsedTime);
+          setElapsedTime(data.elapsedTime);
+          setShowModal(true);
+        })
         .catch(error => {
-          console.error('error with heart click', error);
+          console.error(error);
         });
     }
   };
@@ -97,7 +105,11 @@ export default function GamePlay() {
         </div>
       </div>
       {showModal && (
-        <Modal heartPosition={heartPosition} onClose={handleCloseModal} />
+        <Modal
+          heartPosition={heartPosition}
+          onClose={handleCloseModal}
+          elapsedTime={elapsedTime}
+        />
       )}
     </div>
   );
