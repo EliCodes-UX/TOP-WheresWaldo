@@ -7,12 +7,14 @@ export default function Modal({ heartPosition, onClose }) {
   };
 
   return (
-    <div className='modal-overlay' onClick={handleClickOutside}>
-      <div className='modal-content'>
+    <div className='modalOverlay' onClick={handleClickOutside}>
+      <div className='modalContent'>
         <p>
           You found the heart at {heartPosition.x}, {heartPosition.y}
         </p>
-        <button onClick={onClose}>Close Modal</button>
+        <button onClick={onClose} className='modalbtn btn'>
+          Close Modal
+        </button>
       </div>
     </div>
   );
