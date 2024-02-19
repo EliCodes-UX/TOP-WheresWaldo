@@ -66,7 +66,7 @@ export default function GamePlay() {
         </div>
       </div>
       {showModal && (
-        <Modal onClick={handleCloseModal} heartPosition={heartPosition}></Modal>
+        <Modal heartPosition={heartPosition} onClose={handleCloseModal} />
       )}
     </div>
   );
