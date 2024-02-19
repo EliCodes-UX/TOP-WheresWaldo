@@ -10,10 +10,10 @@ export default function MainCard() {
 
   return (
     <div className='mainCard'>
-      <div className='game'>
+      <div className='gameCard'>
         <h2 className='gameHeader'>Find the Heart</h2>
         <img
-          className='heartSnail'
+          className='heartSnailImg'
           src={heartSnail}
           alt='Heart Snail'
           onClick={handleClick}
