@@ -6,6 +6,7 @@ export default function GamePlay() {
   const navigate = useNavigate();
 
   const [heartPosition, setHeartPosition] = useState({ x: 0, y: 0 });
+  const [showModal, setShowModal] = useState(false);
 
   const handleBackToMain = () => {
     navigate('/', { replace: true });
@@ -33,7 +34,11 @@ export default function GamePlay() {
       clickedArea.y <= 193.2890625
     ) {
       console.log('clicked');
+      setShowModal(true);
     }
+  };
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -59,6 +64,13 @@ export default function GamePlay() {
           <button className='btn'>Restart</button>
         </div>
       </div>
+      {showModal && (
+        <modal onClick={handleCloseModal}>
+          <p>
+            you found the heart at {heartPosition.x}, {heartPosition.y}
+          </p>
+        </modal>
+      )}
     </div>
   );
 }
