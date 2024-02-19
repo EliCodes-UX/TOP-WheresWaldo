@@ -10,6 +10,10 @@ app.use(
   })
 );
 
+let startTime;
+let timerInterval;
+let heartClicked = false;
+
 // app.get('/', (req, res) => {
 //   const data = { message: 'Data from backend' };
 //   res.json(data);
