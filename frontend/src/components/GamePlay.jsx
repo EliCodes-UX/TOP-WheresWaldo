@@ -16,7 +16,7 @@ export default function GamePlay() {
     let timerInterval;
 
     if (!timerStarted) {
-      fetch('/startTimer')
+      fetch('http://localhost:5000/startTimer')
         .then(response => {
           if (response.ok) {
             setTimerStarted(true);
@@ -59,12 +59,12 @@ export default function GamePlay() {
       clickedArea.y <= 193.2890625
     ) {
       console.log('clicked');
-      fetch('/elapsedTime')
+      fetch('http://localhost:5000/elapsedTime')
         .then(response => {
           if (response.ok) {
             return response.json();
           } else {
-            throw new Error('Error fetching elapsed time');
+            throw new Error('Failed to fetch elapsed time');
           }
         })
         .then(data => {
@@ -73,7 +73,7 @@ export default function GamePlay() {
           setShowModal(true);
         })
         .catch(error => {
-          console.error(error);
+          console.error('Error fetching elapsed time:', error);
         });
     }
   };
