@@ -37,26 +37,23 @@ export default function GamePlay() {
 
     setHeartPosition(clickedArea);
 
-    if (
+    // Check if the click is within the specified area of the image
+    const isWithinHeartArea =
       clickedArea.x >= 91.69921875 &&
       clickedArea.x <= 112.69921875 &&
       clickedArea.y >= 169.2890625 &&
-      clickedArea.y <= 193.2890625
-    ) {
-      if (timerRunning) {
-        axios
-          .get('http://localhost:5000/api/stop-timer')
-          .then(response => console.log(response.data))
-          .catch(error => console.error(error));
-      } else {
-        axios
-          .get('http://localhost:5000/api/start-timer')
-          .then(response => console.log(response.data))
-          .catch(error => console.error(error));
-      }
-      setTimerRunning(!timerRunning);
+      clickedArea.y <= 193.2890625;
+
+    // If the click is within the heart area and timer is running, stop the timer
+    if (isWithinHeartArea) {
+      axios
+        .get('http://localhost:5000/api/stop-timer')
+        .then(response => console.log(response.data))
+        .catch(error => console.error(error));
+      setTimerRunning(false);
     }
   };
+
   const handleCloseModal = () => {
     setShowModal(false);
   };
