@@ -3,38 +3,23 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import heartSnail from '../assets/heart-snail.jpg';
 import Modal from './Modal';
+import axios from 'axios';
 
 export default function GamePlay() {
   const navigate = useNavigate();
 
   const [heartPosition, setHeartPosition] = useState({ x: 0, y: 0 });
   const [showModal, setShowModal] = useState(false);
-  const [timerStarted, setTimerStarted] = useState(false);
-  const [elapsedTime, setElapsedTime] = useState(0);
+  const [timerRunning, setTimerRunning] = useState(false);
 
+  // changes
   useEffect(() => {
-    let timerInterval;
-
-    if (!timerStarted) {
-      fetch('http://localhost:5000/startTimer')
-        .then(response => {
-          if (response.ok) {
-            setTimerStarted(true);
-            timerInterval = setInterval(() => {
-              console.log('Timer is running...');
-            }, 1000);
-          }
-        })
-        .catch(error => {
-          console.error('Error starting timer:', error);
-        });
-    }
-
-    return () => {
-      clearInterval(timerInterval);
-      console.log('Timer ended');
-    };
-  }, [timerStarted]);
+    // Start the timer when component mounts
+    axios
+      .get('http://localhost:5000/api/start-timer')
+      .then(response => console.log(response.data))
+      .catch(error => console.error(error));
+  }, []);
 
   const handleBackToMain = () => {
     navigate('/', { replace: true });
@@ -58,23 +43,18 @@ export default function GamePlay() {
       clickedArea.y >= 169.2890625 &&
       clickedArea.y <= 193.2890625
     ) {
-      console.log('clicked');
-      fetch('http://localhost:5000/elapsedTime')
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error('Failed to fetch elapsed time');
-          }
-        })
-        .then(data => {
-          console.log('Elapsed time:', data.elapsedTime);
-          setElapsedTime(data.elapsedTime);
-          setShowModal(true);
-        })
-        .catch(error => {
-          console.error('Error fetching elapsed time:', error);
-        });
+      if (timerRunning) {
+        axios
+          .get('http://localhost:5000/api/stop-timer')
+          .then(response => console.log(response.data))
+          .catch(error => console.error(error));
+      } else {
+        axios
+          .get('http://localhost:5000/api/start-timer')
+          .then(response => console.log(response.data))
+          .catch(error => console.error(error));
+      }
+      setTimerRunning(!timerRunning);
     }
   };
   const handleCloseModal = () => {
@@ -108,7 +88,7 @@ export default function GamePlay() {
         <Modal
           heartPosition={heartPosition}
           onClose={handleCloseModal}
-          elapsedTime={elapsedTime}
+          // elapsedTime={elapsedTime}
         />
       )}
     </div>
