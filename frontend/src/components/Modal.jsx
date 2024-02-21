@@ -12,7 +12,7 @@ export default function Modal({ heartPosition, onClose, elapsedTime }) {
         <p>
           You found the heart at {heartPosition.x}, {heartPosition.y}
         </p>
-        <p>it took you {elapsedTime} sec to find it.</p>
+        <p>it took you {elapsedTime} seconds to find it.</p>
         <button onClick={onClose} className='modalbtn btn'>
           Close Modal
         </button>

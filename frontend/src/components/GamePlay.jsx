@@ -11,6 +11,7 @@ export default function GamePlay() {
   const [heartPosition, setHeartPosition] = useState({ x: 0, y: 0 });
   const [showModal, setShowModal] = useState(false);
   const [timerRunning, setTimerRunning] = useState(false);
+  const [startTime, setStartTime] = useState(null);
   const [elapsedTime, setElapsedTime] = useState(0);
 
   // changes
@@ -23,7 +24,7 @@ export default function GamePlay() {
         setTimerRunning(true);
       })
       .catch(error => console.error(error));
-  }, []);
+  }, [timerRunning]);
 
   const handleBackToMain = () => {
     navigate('/', { replace: true });
@@ -50,10 +51,15 @@ export default function GamePlay() {
     if (isWithinHeartArea) {
       axios
         .get('http://localhost:5000/api/stop-timer')
-        .then(response => console.log(response.data))
+        .then(response => {
+          console.log(response.data);
+          setTimerRunning(false);
+          const endTime = Date.now();
+          const elapsedTimeInSeconds = Math.floor((endTime - startTime) / 1000);
+          setElapsedTime(elapsedTimeInSeconds);
+          setShowModal(true);
+        })
         .catch(error => console.error(error));
-      setTimerRunning(false);
-      setShowModal(true);
     }
   };
 
@@ -85,7 +91,7 @@ export default function GamePlay() {
         <Modal
           heartPosition={heartPosition}
           onClose={handleCloseModal}
-          // elapsedTime={elapsedTime}
+          elapsedTime={elapsedTime}
         />
       )}
     </div>
