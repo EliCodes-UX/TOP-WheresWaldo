@@ -11,12 +11,17 @@ export default function GamePlay() {
   const [heartPosition, setHeartPosition] = useState({ x: 0, y: 0 });
   const [showModal, setShowModal] = useState(false);
   const [timerRunning, setTimerRunning] = useState(false);
+  const [elapsedTime, setElapsedTime] = useState(0);
 
   // changes
   useEffect(() => {
     axios
       .get('http://localhost:5000/api/start-timer')
-      .then(response => console.log(response.data))
+      .then(response => {
+        console.log(response.data);
+        setStartTime(Date.now()); // Record start time
+        setTimerRunning(true);
+      })
       .catch(error => console.error(error));
   }, []);
 
@@ -48,6 +53,7 @@ export default function GamePlay() {
         .then(response => console.log(response.data))
         .catch(error => console.error(error));
       setTimerRunning(false);
+      setShowModal(true);
     }
   };
 
@@ -73,9 +79,6 @@ export default function GamePlay() {
           <button className='homeBtn btn' onClick={handleBackToMain}>
             Back to Main
           </button>
-        </div>
-        <div>
-          <button className='btn'>Restart</button>
         </div>
       </div>
       {showModal && (
