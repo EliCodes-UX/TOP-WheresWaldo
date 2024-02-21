@@ -10,6 +10,7 @@ export default function GamePlay() {
 
   const [heartPosition, setHeartPosition] = useState({ x: 0, y: 0 });
   const [showModal, setShowModal] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [timerRunning, setTimerRunning] = useState(false);
   const [startTime, setStartTime] = useState(null);
   const [elapsedTime, setElapsedTime] = useState(0);

@@ -1,13 +1,7 @@
 /* eslint-disable react/prop-types */
 export default function Modal({ heartPosition, onClick, elapsedTime }) {
-  const handleClickOutside = event => {
-    if (!event.target.closest('.modal-content')) {
-      onClick();
-    }
-  };
-
   return (
-    <div className='modalOverlay' onClick={handleClickOutside}>
+    <div className='modalOverlay'>
       <div className='modalContent'>
         <p>
           You found the heart at {heartPosition.x}, {heartPosition.y}
@@ -16,6 +10,9 @@ export default function Modal({ heartPosition, onClick, elapsedTime }) {
         <form>
           <p>input your name for your score</p>
           <input type='text'></input>
+          <button type='submit' className='submit btn'>
+            Submit
+          </button>
         </form>
         <button onClick={onClick} className='modalbtn btn'>
           Close Modal

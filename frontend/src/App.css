@@ -89,11 +89,25 @@ body {
 .modalOverlay {
   display: flex;
   background-color: var(--sec-color);
-  height: 100px;
+  width: 350px;
+  height: 300px;
   flex-direction: column;
   padding: 1em;
   border: 4px solid var(--main-color);
   border-radius: 15%;
+  position: fixed;
+  left: 33%;
+}
+.modalContent {
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  align-items: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
 }
 
 /* CSS for buttons help from By Foundation */
