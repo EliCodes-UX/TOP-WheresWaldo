@@ -20,7 +20,7 @@ app.get('/api/start-timer', (req, res) => {
     timerId = setInterval(() => {
       elapsedTime += 1; // Increase elapsed time by 1 second
       console.log('Elapsed Time:', elapsedTime);
-    }, 1000); // Run every second
+    }, 100); // Run every second
     res.send('Timer started.');
   } else {
     res.send('Timer is already running.');

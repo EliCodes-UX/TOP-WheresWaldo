@@ -24,7 +24,7 @@ export default function GamePlay() {
         setTimerRunning(true);
       })
       .catch(error => console.error(error));
-  }, [timerRunning]);
+  }, []);
 
   const handleBackToMain = () => {
     navigate('/', { replace: true });
