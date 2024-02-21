@@ -1,4 +1,5 @@
 const cors = require('cors');
+const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -15,12 +16,42 @@ let elapsedTime = 0;
 
 app.use(express.json());
 
+mongoose.connect(
+  'mongodb+srv://elibonner:CRSbTdYZd5FBEuj0@cluster0.phm1xtr.mongodb.net/?retryWrites=true&w=majority'
+);
+const db = mongoose.connection;
+
+// new Schema
+const userSchema = new mongoose.Schema({
+  username: String,
+  timeElapsed: Number,
+});
+
+const User = mongoose.model('URL', userSchema);
+
+app.post('/api/saveUser', async (req, res) => {
+  const { username, timeElapsed } = req.body;
+
+  const newUser = new User({
+    username,
+    timeElapsed,
+  });
+
+  try {
+    await newUser.save();
+    res.send(200).send('User data saved');
+  } catch (error) {
+    console.error('error saving data', error);
+    res.send(500).send('internal server error');
+  }
+});
+
 app.get('/api/start-timer', (req, res) => {
   if (!timerId) {
     timerId = setInterval(() => {
-      elapsedTime += 1; // Increase elapsed time by 1 second
+      elapsedTime += 1;
       console.log('Elapsed Time:', elapsedTime);
-    }, 100); // Run every second
+    }, 1000);
     res.send('Timer started.');
   } else {
     res.send('Timer is already running.');
