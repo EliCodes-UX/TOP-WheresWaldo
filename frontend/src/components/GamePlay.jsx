@@ -90,7 +90,7 @@ export default function GamePlay() {
       {showModal && (
         <Modal
           heartPosition={heartPosition}
-          onClose={handleCloseModal}
+          onClick={handleCloseModal}
           elapsedTime={elapsedTime}
         />
       )}

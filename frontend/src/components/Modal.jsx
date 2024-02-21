@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-export default function Modal({ heartPosition, onClose, elapsedTime }) {
+export default function Modal({ heartPosition, onClick, elapsedTime }) {
   const handleClickOutside = event => {
     if (!event.target.closest('.modal-content')) {
-      onClose();
+      onClick();
     }
   };
 
@@ -17,7 +17,7 @@ export default function Modal({ heartPosition, onClose, elapsedTime }) {
           <p>input your name for your score</p>
           <input type='text'></input>
         </form>
-        <button onClick={onClose} className='modalbtn btn'>
+        <button onClick={onClick} className='modalbtn btn'>
           Close Modal
         </button>
       </div>
