@@ -96,7 +96,7 @@ body {
   border: 4px solid var(--main-color);
   border-radius: 15%;
   position: fixed;
-  left: 33%;
+  left: 32.4%;
 }
 .modalContent {
   display: flex;
