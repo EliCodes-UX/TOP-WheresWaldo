@@ -37,3 +37,4 @@ export default function HighScoreModal({ onClick }) {
     </div>
   );
 }
+// app needs refactoring
