@@ -1,6 +1,7 @@
 const cors = require('cors');
 const mongoose = require('mongoose');
 const express = require('express');
+require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -17,7 +18,7 @@ let timeElapsed = 0;
 app.use(express.json());
 
 mongoose.connect(
-  'mongodb+srv://elibonner:CRSbTdYZd5FBEuj0@cluster0.phm1xtr.mongodb.net/?retryWrites=true&w=majority'
+  'mongodb+srv://elibonner:${process.env.MONGODB_PASSWORD}@cluster0.phm1xtr.mongodb.net/?retryWrites=true&w=majority'
 );
 const db = mongoose.connection;
 
