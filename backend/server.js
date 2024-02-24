@@ -17,9 +17,7 @@ let timeElapsed = 0;
 
 app.use(express.json());
 
-mongoose.connect(
-  'mongodb+srv://elibonner:${process.env.MONGODB_PASSWORD}@cluster0.phm1xtr.mongodb.net/?retryWrites=true&w=majority'
-);
+mongoose.connect(`${process.env.MONGO_URL}`);
 const db = mongoose.connection;
 
 // new Schema

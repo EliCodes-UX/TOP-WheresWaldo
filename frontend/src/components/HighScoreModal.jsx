@@ -7,7 +7,7 @@ export default function HighScoreModal({ onClick }) {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/highScores')
+      .get('https://top-whereswaldo-api.onrender.com/api/highScores')
       .then(response => {
         setHighScores(response.data);
       })
