@@ -49,8 +49,8 @@ app.post('/api/saveUser', async (req, res) => {
 app.get('/api/start-timer', (req, res) => {
   if (!timerId) {
     timerId = setInterval(() => {
-      elapsedTime += 1;
-      console.log('Elapsed Time:', elapsedTime);
+      timeElapsed += 1;
+      console.log('Elapsed Time:', timeElapsed);
     }, 1000);
     res.send('Timer started.');
   } else {
