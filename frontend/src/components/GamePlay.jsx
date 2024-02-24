@@ -21,7 +21,7 @@ export default function GamePlay() {
       .get('http://localhost:5000/api/start-timer')
       .then(response => {
         console.log(response.data);
-        setStartTime(Date.now()); // Record start time
+        setStartTime(Date.now());
         setTimerRunning(true);
       })
       .catch(error => console.error(error));
