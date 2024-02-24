@@ -7,7 +7,7 @@ export default function HighScoreModal({ onClick }) {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/highscores')
+      .get('http://localhost:5000/api/highScores')
       .then(response => {
         setHighScores(response.data);
       })
@@ -21,7 +21,7 @@ export default function HighScoreModal({ onClick }) {
   const top10Scores = sortedScores.slice(0, 10);
 
   return (
-    <div>
+    <div className='modalOverlay highScores'>
       <h2>Top 10 High Scores</h2>
       <ol>
         {top10Scores.map((score, index) => (

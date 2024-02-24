@@ -48,8 +48,8 @@ app.post('/api/saveUser', async (req, res) => {
 
 app.get('/api/highScores', async (req, res) => {
   try {
-    const User = await Users.find().sort({ timeElapsed: 1 }).limit(10);
-    res.json(User);
+    const highScores = await User.find().sort({ timeElapsed: 1 }).limit(10);
+    res.json(highScores);
   } catch (error) {
     console.error('Error fetching high scores:', error);
     res.status(500).json({ error: 'Internal server error' });
