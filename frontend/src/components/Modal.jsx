@@ -40,7 +40,7 @@ export default function Modal({ heartPosition, onClick, timeElapsed }) {
           </button>
         </form>
         <button onClick={onClick} className='modalbtn btn'>
-          Close Modal
+          Close
         </button>
       </div>
     </div>

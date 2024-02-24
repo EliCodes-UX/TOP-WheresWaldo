@@ -13,7 +13,7 @@ export default function Header() {
   };
 
   return (
-    <>
+    <div>
       <header className='header'>
         <div className='logo'>
           <img src='./src/assets/wheresWaldoLogo.png' className='logoImg' />
@@ -24,6 +24,6 @@ export default function Header() {
         </div>
       </header>
       <div>{showModal && <HighScoreModal onClick={handleCloseModal} />}</div>
-    </>
+    </div>
   );
 }
