@@ -13,7 +13,7 @@ export default function GamePlay() {
   // eslint-disable-next-line no-unused-vars
   const [timerRunning, setTimerRunning] = useState(false);
   const [startTime, setStartTime] = useState(null);
-  const [elapsedTime, setElapsedTime] = useState(0);
+  const [timeElapsed, setTimeElapsed] = useState(0);
 
   // changes
   useEffect(() => {
@@ -56,8 +56,8 @@ export default function GamePlay() {
           console.log(response.data);
           setTimerRunning(false);
           const endTime = Date.now();
-          const elapsedTimeInSeconds = Math.floor((endTime - startTime) / 1000);
-          setElapsedTime(elapsedTimeInSeconds);
+          const timeElapsedInSeconds = Math.floor((endTime - startTime) / 1000);
+          setTimeElapsed(timeElapsedInSeconds);
           setShowModal(true);
         })
         .catch(error => console.error(error));
@@ -92,7 +92,7 @@ export default function GamePlay() {
         <Modal
           heartPosition={heartPosition}
           onClick={handleCloseModal}
-          elapsedTime={elapsedTime}
+          timeElapsed={timeElapsed}
         />
       )}
     </div>

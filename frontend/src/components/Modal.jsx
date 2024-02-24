@@ -2,14 +2,14 @@ import axios from 'axios';
 import { useState } from 'react';
 
 /* eslint-disable react/prop-types */
-export default function Modal({ heartPosition, onClick, elapsedTime }) {
+export default function Modal({ heartPosition, onClick, timeElapsed }) {
   const [username, setUserName] = useState('');
 
-  const saveUserData = async (username, elapsedTime) => {
+  const saveUserData = async (username, timeElapsed) => {
     try {
       await axios.post('http://localhost:5000/api/saveUser', {
         username,
-        elapsedTime,
+        timeElapsed,
       });
       console.log('user saved');
     } catch (error) {
@@ -19,7 +19,7 @@ export default function Modal({ heartPosition, onClick, elapsedTime }) {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    saveUserData(username, elapsedTime);
+    saveUserData(username, timeElapsed);
   };
   return (
     <div className='modalOverlay'>
@@ -27,7 +27,7 @@ export default function Modal({ heartPosition, onClick, elapsedTime }) {
         <p>
           You found the heart at {heartPosition.x}, {heartPosition.y}
         </p>
-        <p>it took you {elapsedTime} seconds to find it.</p>
+        <p>it took you {timeElapsed} seconds to find it.</p>
         <form onSubmit={handleSubmit}>
           <p>input your name for your score</p>
           <input

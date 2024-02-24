@@ -12,7 +12,7 @@ app.use(
 );
 
 let timerId = null;
-let elapsedTime = 0;
+let timeElapsed = 0;
 
 app.use(express.json());
 
@@ -39,10 +39,10 @@ app.post('/api/saveUser', async (req, res) => {
 
   try {
     await newUser.save();
-    res.sendStatus(200).send('User data saved');
+    res.status(200).send('User data saved');
   } catch (error) {
     console.error('error saving data', error);
-    res.send(500).send('internal server error');
+    res.status(500).send('internal server error');
   }
 });
 
