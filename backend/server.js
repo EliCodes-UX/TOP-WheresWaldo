@@ -39,7 +39,7 @@ app.post('/api/saveUser', async (req, res) => {
 
   try {
     await newUser.save();
-    res.send(200).send('User data saved');
+    res.sendStatus(200).send('User data saved');
   } catch (error) {
     console.error('error saving data', error);
     res.send(500).send('internal server error');

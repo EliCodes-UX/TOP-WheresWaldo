@@ -7,7 +7,7 @@ export default function Modal({ heartPosition, onClick, elapsedTime }) {
 
   const saveUserData = async (username, elapsedTime) => {
     try {
-      await axios.post('http://localhost:5000/api/save-user-data', {
+      await axios.post('http://localhost:5000/api/saveUser', {
         username,
         elapsedTime,
       });
