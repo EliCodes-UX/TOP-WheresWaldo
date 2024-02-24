@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
   timeElapsed: Number,
 });
 
-const User = mongoose.model('URL', userSchema);
+const User = mongoose.model('Users', userSchema);
 
 app.post('/api/saveUser', async (req, res) => {
   const { username, timeElapsed } = req.body;
@@ -43,6 +43,16 @@ app.post('/api/saveUser', async (req, res) => {
   } catch (error) {
     console.error('error saving data', error);
     res.status(500).send('internal server error');
+  }
+});
+
+app.get('/api/highScores', async (req, res) => {
+  try {
+    const User = await Users.find().sort({ timeElapsed: 1 }).limit(10);
+    res.json(User);
+  } catch (error) {
+    console.error('Error fetching high scores:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
