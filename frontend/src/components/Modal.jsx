@@ -7,13 +7,10 @@ export default function Modal({ heartPosition, onClick, timeElapsed }) {
 
   const saveUserData = async (username, timeElapsed) => {
     try {
-      await axios.post(
-        'https://top-whereswaldo-api.onrender.com/api/saveUser',
-        {
-          username,
-          timeElapsed,
-        }
-      );
+      await axios.post('/api/saveUser', {
+        username,
+        timeElapsed,
+      });
       console.log('user saved');
     } catch (error) {
       console.log('saved data failed', error);

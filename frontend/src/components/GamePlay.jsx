@@ -18,7 +18,7 @@ export default function GamePlay() {
   // changes
   useEffect(() => {
     axios
-      .get('https://top-whereswaldo-api.onrender.com/api/start-timer')
+      .get('/api/start-timer')
       .then(response => {
         console.log(response.data);
         setStartTime(Date.now());
@@ -51,7 +51,7 @@ export default function GamePlay() {
 
     if (isWithinHeartArea) {
       axios
-        .get('https://top-whereswaldo-api.onrender.com/api/stop-timer')
+        .get('/api/stop-timer')
         .then(response => {
           console.log(response.data);
           setTimerRunning(false);

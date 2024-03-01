@@ -2,9 +2,11 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import MainCard from './components/MainCard';
-import GamePlay from './components/GamePlay'; // Import the GamePlay component
+import GamePlay from './components/GamePlay';
+import axios from 'axios';
 
 function App() {
+  axios.defaults.baseURL = 'http://localhost:5000';
   return (
     <Router>
       <div className='App'>

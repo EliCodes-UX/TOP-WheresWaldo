@@ -28,6 +28,10 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('Users', userSchema);
 
+app.get('/test', (req, res) => {
+  res.json('test okay');
+});
+
 app.post('/api/saveUser', async (req, res) => {
   const { username, timeElapsed } = req.body;
 
