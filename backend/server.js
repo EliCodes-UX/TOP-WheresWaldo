@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 app.use(
   cors({
     credentials: true,
-    origin: 'http://localhost:6996',
+    origin: process.env.CLIENT_URL,
   })
 );
 
@@ -66,6 +66,7 @@ app.get('/api/start-timer', (req, res) => {
       console.log('Elapsed Time:', timeElapsed);
     }, 1000);
     res.send('Timer started.');
+    console.log('timer started');
   } else {
     res.send('Timer is already running.');
   }
@@ -77,6 +78,7 @@ app.get('/api/stop-timer', (req, res) => {
     timerId = null;
     elapsedTime = 0;
     res.send('Timer stopped.');
+    console.log('timerstopped');
   } else {
     res.send('Timer is not running.');
   }

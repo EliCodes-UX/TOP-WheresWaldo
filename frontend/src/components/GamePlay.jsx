@@ -64,6 +64,11 @@ export default function GamePlay() {
     }
   };
 
+  function stopTimer() {
+    axios.get('api/stop-timer');
+    console.log('stopped');
+  }
+
   const handleCloseModal = () => {
     setShowModal(false);
   };
@@ -83,7 +88,13 @@ export default function GamePlay() {
       </div>
       <div className='buttons'>
         <div className='goHome'>
-          <button className='homeBtn btn' onClick={handleBackToMain}>
+          <button
+            className='homeBtn btn'
+            onClick={() => {
+              handleBackToMain();
+              stopTimer();
+            }}
+          >
             Back to Main
           </button>
         </div>
