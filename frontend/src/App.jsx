@@ -6,7 +6,7 @@ import GamePlay from './components/GamePlay';
 import axios from 'axios';
 
 function App() {
-  axios.defaults.baseURL = 'http://localhost:5000';
+  axios.defaults.baseURL = 'https://top-whereswaldo-api.onrender.com';
   return (
     <Router>
       <div className='App'>
